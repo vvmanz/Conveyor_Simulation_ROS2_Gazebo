@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="detergent">
+    <static>false</static> 
+    <link name="link">
+      <collision name="collision_main">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.12 0.2</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <collision name="collision_cylinder">
+        <pose>0.1 0 0.15 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.015</radius>
+            <length>0.1</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <collision name="collision_cylinder_2">
+        <pose>-0.1 0 0.15 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <pose>-0.1625 0.085 -0.1 1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://detergent/detergent.stl</uri>
+            <scale>0.001 0.001 0.001</scale> 
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>COLOR_MARKER</ambient>
+          <diffuse>COLOR_MARKER</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

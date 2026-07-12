@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="helmet">
+    <static>false</static> 
+    <link name="link">
+      <collision name="collision_sphere">
+        <pose>0 0 0.15 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.15</radius>
+          </sphere>
+        </geometry>
+
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>10.0</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000.0</kp>
+              <kd>100.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+
+      <collision name="collision_cylinder">
+        <pose>0 0 0.02 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.15</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>10.0</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000.0</kp>
+              <kd>100.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+
+
+      <visual name="visual">
+        <pose>0 -0.175 0 1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://helmet/helmet.stl</uri>
+            <scale>0.001 0.001 0.001</scale> 
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>COLOR_MARKER</ambient>
+          <diffuse>COLOR_MARKER</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

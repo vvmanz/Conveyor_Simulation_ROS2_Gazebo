@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="ottoman">
+    <static>false</static> 
+    <link name="link">
+
+    <inertial>
+      <pose>0 -0.115 0 0 0 0</pose>
+      <mass>4.0</mass>
+      <inertia>
+        <ixx>0.07373</ixx>
+        <ixy>0.0</ixy>
+        <ixz>0.0</ixz>
+        <iyy>0.07373</iyy>
+        <iyz>0.0</iyz>
+        <izz>0.1058</izz>
+      </inertia>
+    </inertial>
+
+
+      <collision name="collision">
+        <pose>0 -0.115 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.23</radius>
+            <length>0.25</length> 
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>10.0</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000.0</kp>
+              <kd>100.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+
+      <visual name="visual">
+        <pose>0 0 0 1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://ottoman/ottoman.stl</uri>
+            <scale>0.001 0.001 0.001</scale> 
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>COLOR_MARKER</ambient>
+          <diffuse>COLOR_MARKER</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

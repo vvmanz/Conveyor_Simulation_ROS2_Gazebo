@@ -1,0 +1,3 @@
+[console_scripts]
+dataset_recorder = conveyor_sim.dataset_recorder:main
+simulation_manager = conveyor_sim.simulation_manager:main

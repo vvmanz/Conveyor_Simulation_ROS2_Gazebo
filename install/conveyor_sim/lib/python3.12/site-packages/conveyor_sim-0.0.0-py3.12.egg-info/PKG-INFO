@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: conveyor-sim
+Version: 0.0.0
+Summary: Conveyor simulation with Gazebo Harmonic
+Maintainer: vvmanz
+Maintainer-email: vvmanz@todo.todo
+License: Apache-2.0
+Provides-Extra: test
+License-File: LICENSE

@@ -1,0 +1,12 @@
+WORLD_NAME = "conveyor_world"
+
+CONVEYOR_SPEED = -0.4
+HOPPER_SPEED = -0.1
+
+SPAWN_PERIOD = 3
+
+SPAWN_X = 0.0
+
+SPAWN_Y = 3.8
+
+SPAWN_Z = 1.0

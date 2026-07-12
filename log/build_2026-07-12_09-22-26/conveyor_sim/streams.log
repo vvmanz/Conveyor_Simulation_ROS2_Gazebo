@@ -1,0 +1,136 @@
+[0.883s] Invoking command in '/home/vvmanz/ros2_ws/src/conveyor_sim': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/conveyor_sim build --build-base /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build install --record /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/install.log --single-version-externally-managed install_data
+[1.198s] running egg_info
+[1.198s] creating build/conveyor_sim/conveyor_sim.egg-info
+[1.220s] writing build/conveyor_sim/conveyor_sim.egg-info/PKG-INFO
+[1.220s] writing dependency_links to build/conveyor_sim/conveyor_sim.egg-info/dependency_links.txt
+[1.220s] writing entry points to build/conveyor_sim/conveyor_sim.egg-info/entry_points.txt
+[1.220s] writing requirements to build/conveyor_sim/conveyor_sim.egg-info/requires.txt
+[1.220s] writing top-level names to build/conveyor_sim/conveyor_sim.egg-info/top_level.txt
+[1.220s] writing manifest file 'build/conveyor_sim/conveyor_sim.egg-info/SOURCES.txt'
+[1.310s] [2;36m[07/12/26 09:22:27][0m[2;36m [0m[1;31mERROR   [0m listing git files failed - pretending there aren't any                                                                   ]8;id=453358;file:///home/vvmanz/.local/lib/python3.12/site-packages/setuptools_scm/_file_finders/git.py\[2mgit.py[0m]8;;\[2m:[0m]8;id=652566;file:///home/vvmanz/.local/lib/python3.12/site-packages/setuptools_scm/_file_finders/git.py#26\[2m26[0m]8;;\
+[1.423s] reading manifest file 'build/conveyor_sim/conveyor_sim.egg-info/SOURCES.txt'
+[1.423s] adding license file 'LICENSE'
+[1.423s] writing manifest file 'build/conveyor_sim/conveyor_sim.egg-info/SOURCES.txt'
+[1.424s] running build
+[1.424s] running build_py
+[1.424s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build
+[1.424s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib
+[1.424s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.424s] copying conveyor_sim/conveyor_controller.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.424s] copying conveyor_sim/spawn_object.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.424s] copying conveyor_sim/simulation_config.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.424s] copying conveyor_sim/simulation_manager.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.424s] copying conveyor_sim/__init__.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.425s] copying conveyor_sim/utils.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.425s] copying conveyor_sim/object_spawner.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.425s] copying conveyor_sim/pose.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.425s] copying conveyor_sim/object_tracker.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.425s] copying conveyor_sim/sorter_hopper_controller.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim
+[1.425s] running install
+[1.430s] running install_lib
+[1.453s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.453s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/conveyor_controller.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.453s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/spawn_object.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.453s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/simulation_config.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.454s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/simulation_manager.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.454s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/__init__.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.454s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/utils.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.454s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/object_spawner.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.454s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/pose.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.454s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/object_tracker.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.454s] copying /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build/lib/conveyor_sim/sorter_hopper_controller.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim
+[1.455s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/conveyor_controller.py to conveyor_controller.cpython-312.pyc
+[1.455s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/spawn_object.py to spawn_object.cpython-312.pyc
+[1.455s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/simulation_config.py to simulation_config.cpython-312.pyc
+[1.455s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/simulation_manager.py to simulation_manager.cpython-312.pyc
+[1.456s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/__init__.py to __init__.cpython-312.pyc
+[1.456s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/utils.py to utils.cpython-312.pyc
+[1.456s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/object_spawner.py to object_spawner.cpython-312.pyc
+[1.457s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/pose.py to pose.cpython-312.pyc
+[1.458s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/object_tracker.py to object_tracker.cpython-312.pyc
+[1.458s] byte-compiling /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim/sorter_hopper_controller.py to sorter_hopper_controller.cpython-312.pyc
+[1.458s] running install_data
+[1.458s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/ament_index
+[1.458s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/ament_index/resource_index
+[1.459s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/ament_index/resource_index/packages
+[1.459s] copying resource/conveyor_sim -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/ament_index/resource_index/packages
+[1.459s] copying package.xml -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim
+[1.459s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/launch
+[1.459s] copying launch/simulation.launch.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/launch
+[1.459s] copying launch/bridge.launch.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/launch
+[1.459s] copying launch/gazebo.launch.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/launch
+[1.459s] copying launch/nodes.launch.py -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/launch
+[1.459s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/worlds
+[1.459s] copying worlds/conveyor_world.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/worlds
+[1.460s] copying worlds/empty.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/worlds
+[1.460s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models
+[1.460s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/not_finished
+[1.460s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/not_finished/ottoman
+[1.460s] copying models/not_finished/ottoman/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/not_finished/ottoman
+[1.465s] copying models/not_finished/ottoman/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/not_finished/ottoman
+[1.466s] copying models/not_finished/ottoman/ottoman.stl -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/not_finished/ottoman
+[1.468s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment
+[1.468s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/roll_cage_d
+[1.468s] copying models/environment/roll_cage_d/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/roll_cage_d
+[1.468s] copying models/environment/roll_cage_d/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/roll_cage_d
+[1.468s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/sorter_hopper
+[1.468s] copying models/environment/sorter_hopper/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/sorter_hopper
+[1.469s] copying models/environment/sorter_hopper/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/sorter_hopper
+[1.469s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/roll_cage_c
+[1.469s] copying models/environment/roll_cage_c/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/roll_cage_c
+[1.469s] copying models/environment/roll_cage_c/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/roll_cage_c
+[1.470s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/rgbd
+[1.470s] copying models/environment/rgbd/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/rgbd
+[1.475s] copying models/environment/rgbd/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/rgbd
+[1.475s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/conveyor
+[1.475s] copying models/environment/conveyor/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/conveyor
+[1.476s] copying models/environment/conveyor/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/conveyor
+[1.476s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/conveyor_zone_b
+[1.476s] copying models/environment/conveyor_zone_b/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/conveyor_zone_b
+[1.476s] copying models/environment/conveyor_zone_b/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/conveyor_zone_b
+[1.477s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/camera_holder
+[1.477s] copying models/environment/camera_holder/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/camera_holder
+[1.477s] copying models/environment/camera_holder/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/camera_holder
+[1.477s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/main_zone
+[1.477s] copying models/environment/main_zone/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/main_zone
+[1.477s] copying models/environment/main_zone/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/environment/main_zone
+[1.478s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo
+[1.478s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/box2
+[1.478s] copying models/cargo/box2/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/box2
+[1.478s] copying models/cargo/box2/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/box2
+[1.479s] copying models/cargo/box2/box2.stl -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/box2
+[1.479s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/launchbox
+[1.479s] copying models/cargo/launchbox/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/launchbox
+[1.479s] copying models/cargo/launchbox/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/launchbox
+[1.480s] copying models/cargo/launchbox/launchbox.stl -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/launchbox
+[1.481s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/detergent
+[1.481s] copying models/cargo/detergent/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/detergent
+[1.482s] copying models/cargo/detergent/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/detergent
+[1.482s] copying models/cargo/detergent/detergent.stl -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/detergent
+[1.489s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/bottle
+[1.489s] copying models/cargo/bottle/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/bottle
+[1.489s] copying models/cargo/bottle/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/bottle
+[1.490s] copying models/cargo/bottle/bottle.stl -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/bottle
+[1.491s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/box1
+[1.491s] copying models/cargo/box1/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/box1
+[1.491s] copying models/cargo/box1/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/box1
+[1.491s] copying models/cargo/box1/box1.stl -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/box1
+[1.492s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/plate
+[1.492s] copying models/cargo/plate/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/plate
+[1.492s] copying models/cargo/plate/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/plate
+[1.493s] copying models/cargo/plate/plate.stl -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/plate
+[1.493s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/pen
+[1.494s] copying models/cargo/pen/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/pen
+[1.494s] copying models/cargo/pen/pen.stl -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/pen
+[1.497s] copying models/cargo/pen/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/pen
+[1.497s] creating /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/helmet
+[1.497s] copying models/cargo/helmet/model.config -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/helmet
+[1.498s] copying models/cargo/helmet/model.sdf -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/helmet
+[1.498s] copying models/cargo/helmet/helmet.stl -> /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/share/conveyor_sim/models/cargo/helmet
+[1.503s] running install_egg_info
+[1.525s] Copying build/conveyor_sim/conveyor_sim.egg-info to /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages/conveyor_sim-0.0.0-py3.12.egg-info
+[1.526s] running install_scripts
+[1.662s] Installing dataset_recorder script to /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/conveyor_sim
+[1.662s] Installing simulation_manager script to /home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/conveyor_sim
+[1.663s] writing list of installed files to '/home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/install.log'
+[1.693s] Invoked command in '/home/vvmanz/ros2_ws/src/conveyor_sim' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vvmanz/ros2_ws/src/conveyor_sim/install/conveyor_sim/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/conveyor_sim build --build-base /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/build install --record /home/vvmanz/ros2_ws/src/conveyor_sim/build/conveyor_sim/install.log --single-version-externally-managed install_data

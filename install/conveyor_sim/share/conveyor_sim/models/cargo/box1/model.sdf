@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="box1">
+    <static>false</static> 
+    <link name="link">
+
+      <inertial>
+        <pose>0 0 0 0 0 0</pose> 
+        <mass>0.5</mass> 
+        <inertia>
+          <ixx>0.010417</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.010417</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.013333</izz>
+        </inertia>
+      </inertial>
+
+      <collision name="collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+            <box>
+                <size>0.3 0.2 0.2</size>
+            </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>10.0</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000.0</kp>
+              <kd>100.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+
+      <visual name="visual">
+        <pose>0 -0.1 0 0 0 0</pose> 
+        <geometry>
+          <mesh>
+            <uri>model://box1/box1.stl</uri>
+            <scale>0.001 0.001 0.001</scale> 
+          </mesh>
+        </geometry>
+        <!-- <material>
+          <ambient>0.5 0.5 0.5 1.0</ambient>
+          <diffuse>0.7 0.7 0.7 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material> -->
+        <material>
+          <ambient>COLOR_MARKER</ambient>
+          <diffuse>COLOR_MARKER</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material>
+      </visual>
+
+    </link>
+  </model>
+</sdf>
