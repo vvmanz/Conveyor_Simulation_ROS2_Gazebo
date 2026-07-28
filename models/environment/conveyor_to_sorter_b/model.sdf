@@ -154,7 +154,7 @@
         <link>belt_link</link>
         <min_velocity>-10.0</min_velocity>
         <max_velocity>10.0</max_velocity>
-        <velocity_topic>/conveyor_to_sorter_b_speed</velocity_topic> 
+        <velocity_topic>/to_sorter_b_speed</velocity_topic> 
     </plugin>
 </model>
 </sdf>

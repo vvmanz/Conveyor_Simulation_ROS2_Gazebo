@@ -28,8 +28,15 @@ def generate_launch_description():
         output="screen",
     )
 
+    sorter_controller = Node(
+        package="conveyor_sim",
+        executable="sorter_controller",
+        output="screen",
+    )
+
     return LaunchDescription([
         simulation_manager,
         static_tf,
         dataset_recorder,
+        sorter_controller
     ])

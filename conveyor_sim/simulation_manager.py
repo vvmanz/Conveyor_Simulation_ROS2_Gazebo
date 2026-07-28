@@ -9,6 +9,8 @@ from .conveyor_controller import ConveyorController
 from .sorter_hopper_controller import HopperController
 from .tape_controller import TapeController
 from .inclined_controller import InclinedConveyorsController
+from .conveyor_to_sorter_b_controller import ConveyorToSorterBController
+from .zone_b_controller import ZoneBController
 
 from .simulation_config import (
     CONVEYOR_SPEED,
@@ -31,6 +33,8 @@ class SimulationManager(Node):
         self.conveyor = ConveyorController(self)
         self.tape = TapeController(self)
         self.inclined = InclinedConveyorsController(self)
+        self.tosorterb = ConveyorToSorterBController(self)
+        self.zoneb = ZoneBController(self)
         # self.hopper = HopperController(self)
 
         self.object_spawner = ObjectSpawner(self)
@@ -39,6 +43,8 @@ class SimulationManager(Node):
 
         self.conveyor.start(CONVEYOR_SPEED)
         self.tape.start(CONVEYOR_SPEED)
+        self.tosorterb.start(-CONVEYOR_SPEED)
+        self.zoneb.start(-CONVEYOR_SPEED)
 
         self.inclined.set_speed_c(CONVEYOR_SPEED)
         self.inclined.set_speed_d(CONVEYOR_SPEED)

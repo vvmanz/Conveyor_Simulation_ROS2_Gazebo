@@ -8,6 +8,8 @@ def generate_launch_description():
 
     bridge_topics = [
         "/conveyor_speed@std_msgs/msg/Float64]gz.msgs.Double",
+        "/conveyor_zone_b_speed@std_msgs/msg/Float64]gz.msgs.Double",
+        "/to_sorter_b_speed@std_msgs/msg/Float64]gz.msgs.Double",
         "/tape_speed@std_msgs/msg/Float64]gz.msgs.Double",
         "/inclined_conveyor_speed_c@std_msgs/msg/Float64]gz.msgs.Double",
         "/inclined_conveyor_speed_d@std_msgs/msg/Float64]gz.msgs.Double",

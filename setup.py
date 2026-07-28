@@ -61,7 +61,8 @@ setup(
     entry_points={
         "console_scripts": [
             "simulation_manager = conveyor_sim.simulation_manager:main",
-            "dataset_recorder = conveyor_sim.dataset_recorder:main"
+            "dataset_recorder = conveyor_sim.dataset_recorder:main",
+            "sorter_controller = conveyor_sim.sorter_controller:main"
         ],
     },
 )

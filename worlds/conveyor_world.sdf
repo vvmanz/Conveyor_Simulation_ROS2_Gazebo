@@ -41,19 +41,19 @@
     
     <include>
         <uri>model://conveyor</uri>
-        <name>conveyor_zone_A</name> <!-- Переопределяем имя -->
+        <name>conveyor_zone_A</name> 
         <pose>0 2.75 0.65 0 0 1.5708</pose>
     </include>
 
     <include>
         <uri>model://conveyor_zone_b</uri>
-        <name>conveyor_zone_B</name> <!-- Переопределяем имя -->
+        <name>conveyor_zone_B</name>
         <pose>2.25 -1.6 0.65 0 0 0</pose>
     </include>
 
     <include>
         <uri>model://conveyor_to_sorter_b</uri>
-        <name>conveyor_to_sorter_b</name> <!-- Переопределяем имя -->
+        <name>conveyor_to_sorter_b</name> 
         <pose>0.65 -1.6 0.65 0 0 0</pose>
     </include>
 
@@ -86,9 +86,6 @@
         <name>pusher_2</name> 
         <pose>0.265 -0.4 0.76 0 0 -1.5708</pose>
     </include>
-
-
-
 
 
     <!-- <include>
