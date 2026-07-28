@@ -48,14 +48,53 @@
     <include>
         <uri>model://conveyor_zone_b</uri>
         <name>conveyor_zone_B</name> <!-- Переопределяем имя -->
-        <pose>2.25 -1.75 0.65 0 0 0</pose>
+        <pose>2.25 -1.6 0.65 0 0 0</pose>
     </include>
-
 
     <include>
-        <uri>model://sorter_hopper</uri>
-        <pose>0 0.001 0.65 0 0 1.5708</pose>
+        <uri>model://conveyor_to_sorter_b</uri>
+        <name>conveyor_to_sorter_b</name> <!-- Переопределяем имя -->
+        <pose>0.65 -1.6 0.65 0 0 0</pose>
     </include>
+
+    <include>
+        <uri>model://roll_tape</uri>
+        <name>roll_tape</name> 
+        <pose>0 0.15 0.65 0 0 1.5708</pose>
+    </include>
+
+    <include>
+        <uri>model://inclined_conveyor_c</uri>
+        <name>inclined_conveyor_c</name> 
+        <pose>-0.6275 0.895 0.7 0 0 0</pose>
+    </include>
+
+    <include>
+        <uri>model://inclined_conveyor_d</uri>
+        <name>inclined_conveyor_d</name> 
+        <pose>-0.6275 -0.67 0.7 0 0 0</pose>
+    </include>
+
+    <include>
+        <uri>model://pusher_1</uri>
+        <name>pusher_1</name> 
+        <pose>0.265 1.2 0.76 0 0 -1.5708</pose>
+    </include>
+
+    <include>
+        <uri>model://pusher_2</uri>
+        <name>pusher_2</name> 
+        <pose>0.265 -0.4 0.76 0 0 -1.5708</pose>
+    </include>
+
+
+
+
+
+    <!-- <include>
+        <uri>model://sorter_hopper</uri>
+        <pose>10 0.001 0.65 0 0 1.5708</pose>
+    </include> -->
 
     <include>
         <uri>model://rgbd</uri>
@@ -69,12 +108,12 @@
 
     <include>
         <uri>model://roll_cage_c</uri>   
-        <pose>-2 -2 0 0 0 -1.5708</pose>
+        <pose>-1.4 -0.75 0 0 0 -1.5708</pose>
     </include>
 
     <include>
         <uri>model://roll_cage_d</uri>   
-        <pose>-2 -4 0 0 0 -1.5708</pose>
+        <pose>-1.4 0.6 0 0 0 -1.5708</pose>
     </include>
 </world>
 </sdf>

@@ -1,0 +1,110 @@
+<?xml version="1.0" ?>
+<sdf version="1.10">
+<model name="pusher_2">
+    <static>false</static> <!-- Модель должна быть динамической для работы шарнира -->
+
+    <!-- Неподвижное основание (крепление к раме конвейера) -->
+    <link name="pusher_base">
+        <inertial>
+            <mass>10.0</mass>
+            <inertia>
+                <ixx>0.1</ixx><ixy>0</ixy><ixz>0</ixz>
+                <iyy>0.1</iyy><iyz>0</iyz><izz>0.1</izz>
+            </inertia>
+        </inertial>
+        <!-- Визуальный маркер оси вращения (небольшой цилиндр) -->
+        <visual name="base_visual">
+            <geometry>
+                <cylinder>
+                    <radius>0.02</radius>
+                    <length>0.2</length>
+                </cylinder>
+            </geometry>
+            <material>
+                <ambient>0.1 0.1 0.1 1</ambient>
+                <diffuse>0.1 0.1 0.1 1</diffuse>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Фиксируем основание толкателя в воздухе -->
+    <joint name="world_fixed_joint" type="fixed">
+        <parent>world</parent>
+        <child>pusher_base</child>
+    </joint>
+
+    <!-- Поворотная перегородка (лопатка увеличенная до 75 см) -->
+    <link name="blade_link">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+            <!-- Смещаем центр масс в геометрический центр новой лопатки (0.75м / 2 = 0.375м) -->
+            <pose>0.375 0 0 0 0 0</pose>
+            <!-- Немного увеличим массу, так как лопатка стала длиннее -->
+            <mass>2.5</mass>
+            <inertia>
+                <ixx>0.008</ixx><ixy>0</ixy><ixz>0</ixz>
+                <iyy>0.118</iyy><iyz>0</iyz><izz>0.118</izz>
+            </inertia>
+        </inertial>
+
+        <visual name="blade_visual">
+            <!-- Длина изменена на 0.75м, толщина 2 см, высота 12 см -->
+            <!-- Сдвигаем бокс по X на 0.375м, чтобы край остался на оси вращения -->
+            <pose>0.375 0 0 0 0 0</pose>
+            <geometry>
+                <box><size>0.75 0.02 0.12</size></box>
+            </geometry>
+            <material>
+                <ambient>0.8 0.1 0.1 1</ambient> <!-- Яркий красный цвет -->
+                <diffuse>0.8 0.1 0.1 1</diffuse>
+            </material>
+        </visual>
+
+        <collision name="blade_collision">
+            <pose>0.375 0 0 0 0 0</pose>
+            <geometry>
+                <box><size>0.75 0.02 0.12</size></box>
+            </geometry>
+            <surface>
+                <friction>
+                    <ode>
+                        <mu>0.2</mu> <!-- Низкое трение, чтобы деталь легко скользила в вырез -->
+                        <mu2>0.2</mu2>
+                    </ode>
+                </friction>
+            </surface>
+        </collision>
+    </link>
+
+    <!-- Вертикальный шарнир вращения лопатки -->
+    <joint name="rotary_joint" type="revolute">
+        <parent>pusher_base</parent>
+        <child>blade_link</child>
+        <axis>
+            <xyz>0 0 -1</xyz> <!-- Вращение вокруг вертикальной оси Z -->
+            <limit>
+                <lower>0.0</lower>       <!-- Исходное положение (вдоль бортика) -->
+                <upper>0.785398</upper>  <!-- Максимальный поворот 45 градусов (в радианах) -->
+                <effort>80.0</effort>    <!-- Увеличено усилие для поворота более длинного плеча -->
+                <velocity>5.0</velocity>
+            </limit>
+            <dynamics>
+                <damping>1.5</damping>   <!-- Увеличен демпфер для стабильности длинной лопатки -->
+                <friction>0.5</friction>
+            </dynamics>
+        </axis>
+    </joint>
+
+    <!-- Плагин Gazebo для управления шарниром через ROS 2 -->
+    <plugin
+        filename="gz-sim-joint-position-controller-system"
+        name="gz::sim::systems::JointPositionController">
+        <joint_name>rotary_joint</joint_name>
+        <topic>pusher_2</topic>
+        <!-- Немного подняли пропорциональный коэффициент для компенсации инерции рычага -->
+        <p_gain>800.0</p_gain>
+        <i_gain>10.0</i_gain>
+        <d_gain>15.0</d_gain>
+    </plugin>
+</model>
+</sdf>

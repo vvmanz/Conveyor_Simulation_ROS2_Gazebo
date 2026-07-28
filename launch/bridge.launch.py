@@ -8,7 +8,12 @@ def generate_launch_description():
 
     bridge_topics = [
         "/conveyor_speed@std_msgs/msg/Float64]gz.msgs.Double",
+        "/tape_speed@std_msgs/msg/Float64]gz.msgs.Double",
+        "/inclined_conveyor_speed_c@std_msgs/msg/Float64]gz.msgs.Double",
+        "/inclined_conveyor_speed_d@std_msgs/msg/Float64]gz.msgs.Double",
         "/hopper_speed@std_msgs/msg/Float64]gz.msgs.Double",
+        "/pusher_1@std_msgs/msg/Float64]gz.msgs.Double",
+        "/pusher_2@std_msgs/msg/Float64]gz.msgs.Double",
         f"{gz_sensor_path}/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo",
         f"{gz_sensor_path}/image@sensor_msgs/msg/Image[gz.msgs.Image",
         f"{gz_sensor_path}/depth_image@sensor_msgs/msg/Image[gz.msgs.Image",

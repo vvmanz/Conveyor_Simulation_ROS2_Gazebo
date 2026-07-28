@@ -7,6 +7,8 @@ from rclpy.node import Node
 
 from .conveyor_controller import ConveyorController
 from .sorter_hopper_controller import HopperController
+from .tape_controller import TapeController
+from .inclined_controller import InclinedConveyorsController
 
 from .simulation_config import (
     CONVEYOR_SPEED,
@@ -27,14 +29,21 @@ class SimulationManager(Node):
         self.spawn_registry.clear()  
 
         self.conveyor = ConveyorController(self)
-        self.hopper = HopperController(self)
+        self.tape = TapeController(self)
+        self.inclined = InclinedConveyorsController(self)
+        # self.hopper = HopperController(self)
 
         self.object_spawner = ObjectSpawner(self)
 
         self.get_logger().info("Simulation Manager started")
 
         self.conveyor.start(CONVEYOR_SPEED)
-        self.hopper.start(HOPPER_SPEED)
+        self.tape.start(CONVEYOR_SPEED)
+
+        self.inclined.set_speed_c(CONVEYOR_SPEED)
+        self.inclined.set_speed_d(CONVEYOR_SPEED)
+
+        # self.hopper.start(HOPPER_SPEED)
 
         self.spawn_timer = self.create_timer(
             SPAWN_PERIOD,
@@ -50,9 +59,9 @@ class SimulationManager(Node):
         self.get_logger().info(
             f"Conveyor speed = {CONVEYOR_SPEED}"
         )
-        self.get_logger().info(
-            f"Hopper speed = {CONVEYOR_SPEED}"
-        )
+        # self.get_logger().info(
+        #     f"Hopper speed = {CONVEYOR_SPEED}"
+        # )
 
     def spawn_random_object(self):
         obj = self.object_spawner.spawn_random()
