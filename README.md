@@ -1,89 +1,111 @@
 # conveyor_sim
 
-**A ROS 2 + Gazebo Harmonic simulation of an automated parcel-sorting conveyor, with RGB-D data collection and diverter control.**
+**A parcel-sorting conveyor station in Gazebo Harmonic and ROS 2: belts, an RGB-D camera, two pushers, a dataset recorder and a sorter you can plug your own classifier into.**
 
 English | [Русский](README.ru.md)
 
-`conveyor_sim` is a simulation prototype of a warehouse sorting line. Gazebo handles the conveyor world and moving packages; ROS 2 coordinates spawning, camera acquisition, class messages and sorting actuators. The project also records paired RGB and depth samples for further computer-vision experiments.
+conveyor_sim is a ROS 2 (`ament_python`) package that simulates a warehouse sorting line, built for a logistics case
+(Ozon Tech). Cargo of different shapes and colours is dropped onto the main belt, rides under an RGB-D camera that
+records images of every parcel, receives a class (0, 1 or 2) and is then routed by two pushers onto the matching branch
+of the line. The whole station is plain SDF models plus a handful of Python nodes talking through `ros_gz_bridge`, so you
+can replace the classifier, the belt logic or the cargo set without touching the physics.
+
+```
+ spawn ──► main belt ──► RGB-D camera ──► class 0 ──► both pushers closed, parcel stays on the main line
+                              │               ├──► class 1 ──► pusher 1 ──► side branch (inclined belt C)
+                              ▼               └──► class 2 ──► pusher 2 ──► side branch (inclined belt D)
+                      dataset_ozon/<object>/
+                        rgb/*.png  depth/*.npy
+```
 
 ## Features
 
-- **Conveyor station** assembled from SDF models: belts, ramps, hoppers, diverters and cargo objects.
-- **Automatic parcel generation** with randomly selected models, colors and initial orientations.
-- **RGB-D recording**: three RGB frames (`.png`) and depth arrays (`.npy`) captured for each tracked object at defined positions.
-- **Sorting scenario**: three classes (0, 1, 2), with two pusher actuators controlled according to the received class and object position.
-- **ROS–Gazebo bridge** for conveyor commands and camera topics.
+* **Complete station in SDF**: main belt, zone B belt, belt to sorter B, roll tape, two inclined belts (C, D), a sorter
+  hopper, two pushers, two roll cages, the camera and its holder (`models/environment/`, assembled in
+  `worlds/conveyor_world.sdf`).
+* **Cargo library**: 8 STL models (bottle, box1, box2, detergent, helmet, launchbox, pen, plate) plus an ottoman. Every
+  spawned object gets a random colour out of 7 (`models/cargo/`). Adding a model is one folder with `model.sdf`.
+* **Spawner and registry**: `simulation_manager` drops a random parcel every 2 s at the top of the belt, keeps a JSON
+  registry of live objects and cleans up after them.
+* **Dataset recorder**: `dataset_recorder` saves 3 RGB frames (PNG) and 3 depth frames (`.npy`) of every parcel as it
+  travels through the camera zone, into `dataset_ozon/<object>/rgb|depth/`, and publishes the result of classification
+  on `/object_classification` as JSON `{"name": ..., "class": 0|1|2}`.
+* **Sorter**: `sorter_controller` opens pusher 1 for class 1 and pusher 2 for class 2, closes it a second after the
+  parcel passes, lets class 0 go straight through, and removes every object from the world 10 s after it was classified
+  (a direct call to the Gazebo `/world/conveyor_world/remove` service).
+* **ROS 2 interface** through `ros_gz_bridge`: belt speeds, pusher commands and the camera (see the table below).
 
-> **Scope:** the current `dataset_recorder.py` uses a **random class label** as a placeholder after collecting images. This is a demonstration of the sorting pipeline, **not a trained visual classifier**.
+> The classifier is a stub: `dataset_recorder` currently picks a random class from 0 to 2 after the third frame. Replace
+> that one place with your model (it only needs to publish the same JSON on `/object_classification`) and the rest of the
+> line works unchanged.
+
+### Topics
+
+| topic | type | direction | what |
+|---|---|---|---|
+| `/conveyor_speed`, `/conveyor_zone_b_speed`, `/to_sorter_b_speed`, `/tape_speed`, `/hopper_speed` | `std_msgs/Float64` | ROS → Gazebo | belt speeds |
+| `/inclined_conveyor_speed_c`, `/inclined_conveyor_speed_d` | `std_msgs/Float64` | ROS → Gazebo | inclined belts |
+| `/pusher_1`, `/pusher_2` | `std_msgs/Float64` | ROS → Gazebo | pusher position (0 closed, 0.78 open) |
+| `/camera/image_raw`, `/camera/depth_raw`, `/camera/camera_info`, `/camera/points` | `sensor_msgs/Image`, `CameraInfo`, `PointCloud2` | Gazebo → ROS | RGB-D camera |
+| `/object_classification` | `std_msgs/String` (JSON) | recorder → sorter | class of a parcel |
 
 ## Requirements
 
-- Linux with ROS 2 and Gazebo Harmonic (`gz-sim 8`) and the matching `ros_gz_sim` / `ros_gz_bridge` packages.
-- ROS 2 packages: `rclpy`, `sensor_msgs`, `std_msgs`, `tf2_ros`, `cv_bridge`.
-- Python packages: `numpy`, `opencv-python` (or system-provided OpenCV).
-- Python Gazebo Transport bindings used by the source: `gz.transport13`, `gz.msgs10`.
-- `colcon` and a sourced ROS 2 environment.
+* Ubuntu 24.04, ROS 2 Jazzy, Gazebo Harmonic (gz-sim 8);
+* `ros-jazzy-ros-gz` (`ros_gz_sim`, `ros_gz_bridge`), `ros-jazzy-cv-bridge`, `tf2_ros`;
+* Python ≥ 3.10 with numpy, OpenCV and the Gazebo Python bindings (`gz.transport13`, `gz.msgs10`).
 
-The dependencies are inferred from the source and are **not packaged as a lockfile**. Check that the Python Gazebo bindings match the installed Gazebo distribution.
-
-## Build and run
-
-Place this repository in the `src/` directory of a ROS 2 workspace. Replace `YOUR_REPOSITORY_URL` with the actual clone URL and change `jazzy` if a different ROS 2 distro is installed:
+## Installation
 
 ```bash
-mkdir -p ~/conveyor_ws/src
-cd ~/conveyor_ws/src
-git clone YOUR_REPOSITORY_URL conveyor_sim
+mkdir -p ~/conveyor_ws/src && cd ~/conveyor_ws/src
+git clone https://github.com/<your-account>/conveyor_sim.git
 cd ~/conveyor_ws
-source /opt/ros/jazzy/setup.bash  # change if you use another ROS 2 distro
-colcon build --symlink-install --packages-select conveyor_sim
+source /opt/ros/jazzy/setup.bash
+colcon build --packages-select conveyor_sim --symlink-install
 source install/setup.bash
-ros2 launch conveyor_sim simulation.launch.py
 ```
 
-The launch file starts the Gazebo world, ROS–Gazebo bridge, simulation manager, dataset recorder, sorting controller and a static camera transform. Use a matching ROS 2 / Gazebo setup; this archive does not contain an automated environment installer.
+> Build with `--symlink-install`: the dataset (`dataset_ozon/`) is then written to the workspace root, next to `src/`.
 
-## Architecture
+## Quick start
 
-```text
-Gazebo Harmonic                 ROS 2
-conveyor_world.sdf              simulation_manager
-  ├─ conveyor models  <------  object spawn / cleanup
-  ├─ moving parcels    ------>  object positions
-  ├─ RGB-D camera      ------>  dataset_recorder
-  └─ pusher actuators <------  sorter_controller
-                                   ^
-                                   └── /object_classification (JSON String)
+```bash
+ros2 launch conveyor_sim simulation.launch.py      # Gazebo + bridge + all nodes
 ```
 
-**Useful topics**
+`simulation.launch.py` includes three launch files that can also be started on their own:
 
-| Topic | Purpose |
+```bash
+ros2 launch conveyor_sim gazebo.launch.py          # the world only
+ros2 launch conveyor_sim bridge.launch.py          # ros_gz_bridge only
+ros2 launch conveyor_sim nodes.launch.py           # simulation_manager, dataset_recorder, sorter_controller, static TF
+```
+
+Belt speeds and the spawn period live in `conveyor_sim/simulation_config.py`; pusher angles and timings
+(`P_OPEN`, `HOLD_DELAY`, `LIFETIME_DELAY`) at the top of `conveyor_sim/sorter_controller.py`.
+
+## Make it yours
+
+| you want to | do |
 |---|---|
-| `/camera/image_raw` | RGB camera image |
-| `/camera/depth_raw` | Depth image |
-| `/object_classification` | `{"name": "example_000001", "class": 1}` (classes: 0, 1, 2) as `std_msgs/String` |
-| `/pusher_1`, `/pusher_2` | Pusher control bridged to Gazebo |
-
-## Recorded data
-
-`dataset_recorder.py` creates a `dataset_ozon/` directory relative to its resolved workspace path. Each object receives a folder with `rgb/000.png`–`002.png` and `depth/000.npy`–`002.npy`. Output paths depend on where the ROS package is installed and should be checked before a long run.
+| plug in a real classifier | publish `{"name": "<object>", "class": 0|1|2}` as `std_msgs/String` on `/object_classification` instead of the random choice in `dataset_recorder.py` |
+| add a cargo type | put a folder with `model.sdf`, `model.config` and a mesh into `models/cargo/`, rebuild: the spawner scans the folder |
+| change how fast parcels come | `SPAWN_PERIOD` in `conveyor_sim/simulation_config.py` |
+| change belt speed | `CONVEYOR_SPEED`, `HOPPER_SPEED` in the same file |
+| record more frames per parcel | `NUM_IMAGES`, `Y_MAX`, `Y_MIN` in `conveyor_sim/dataset_recorder.py` |
 
 ## Repository layout
 
-```text
-conveyor_sim/          ROS 2 nodes: manager, recorder, sorter, spawner and helpers
-launch/                combined launch, Gazebo, bridge and nodes
-models/cargo/          SDF parcel models
-models/environment/    conveyor and station models
-worlds/                conveyor_world.sdf
-package.xml            ROS 2 package metadata
-setup.py               ament_python package and console entry points
+```
+conveyor_sim/      Python nodes: simulation_manager, object_spawner, spawn_registry, dataset_recorder,
+                   sorter_controller, belt controllers (conveyor, tape, inclined, zone B, to sorter B, hopper)
+launch/            simulation, gazebo, bridge and nodes launch files
+models/cargo/      parcels (STL + SDF)
+models/environment/ belts, pushers, roll cages, camera and holder
+worlds/            conveyor_world.sdf
 ```
 
-## Development notes
+## Licence
 
-- This is an **integration/simulation prototype**, not a production sorting installation.
-- The repository snapshot contains generated `build/`, `install/` and `log/` directories; in a clean checkout, rebuild locally.
-- `package.xml` currently spells `rclpy` as `rlcpy` in an execution dependency. Correct that package manifest entry if dependency resolution fails.
-- The included [`LICENSE`](LICENSE) is Apache-2.0.
+Apache-2.0, see [`LICENSE`](LICENSE).
